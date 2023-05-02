@@ -1,0 +1,27 @@
+{
+    "DomainId": "<DomainIdGoesHere>",
+    "Headers": {
+        "Authorization": "Bearer <ApiTokenGoesHere>",
+        "Content-Type": "application/json"
+    },    
+    "LogConfig": {
+        "Enabled": true,
+        "Name": "logfile",
+        "InstanceName": "LinodeDns.Api",
+        "Logname": "LinodeDns.Api",
+        "FileType": "Json",
+        "FilePath": "C:\\Logs\\%logname%-%Date%.log",
+        "LogRotatePath": "C:\\Logs\\%logname%-*.log",
+        "LogRetentionTime": "30d",
+        "Headers":[
+            "ComputerName", "File", "FunctionName", 
+            "Level", "Line", "Message", "ModuleName", 
+            "Runspace", "Tags", "TargetObject", "Timestamp", 
+            "Type", "Username", "Data"
+        ]
+    },
+    "Exclude": [
+        "nodns",
+        "www.nodns"
+    ]
+}
