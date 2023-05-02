@@ -33,18 +33,16 @@ if($domainList.Count -gt 0){
 # Go through each returned record and attempt to update the DNS
 $domainList | ForEach-Object {
     Write-PSFMessage -Level Debug -Message "Updating '$($_.name)' from '$($_.target)' to '$publicIP'"
-    # Get the domain record to update
-    $domainRecord = Get-DomainRecord $Global:config.DomainId $_.id
 
     # Update the target property with the new public IP
-    $domainRecord.target = $publicIP
+    $_.target = $publicIP
 
     # Update the domain record with the new public IP
-    $result = $domainRecord | Update-DomainRecord $Global:config.DomainId
+    $result = $_ | Update-DomainRecord $Global:config.DomainId
     if($result){
-        Write-PSFMessage -Level Debug -Message "Update successful for record $($domainRecord.id)" -Target $result
+        Write-PSFMessage -Level Debug -Message "Update successful for record $($_.id)" -Target $result
         continue
     }
 
-    Stop-PSFFunction -Message "Update failed for record $($domainRecord.id)" -Target $domainRecord
+    Stop-PSFFunction -Message "Update failed for record $($_.id)" -Target $_
 }
