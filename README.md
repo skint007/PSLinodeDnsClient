@@ -14,6 +14,9 @@ The PSLinodeDnsClient module is a PowerShell module that provides a set of funct
         ```powershell
         Get-Module -ListAvailable PSFramework
         ```
+1. Make sure to edit the `config.json` file and change the DomainId and Authentication header with your API key. The config file is loaded when the module is imported.
+    * After putting your API key in the config, you can use `Get-DomainList` to fetch a list of your domains and get the Id of the domain you want to run the script against.
+
 # Example uses
 Take a look at the [Example script](/ExampleCheckForDnsUpdate.ps1) for a working script to automatically update your Linode DNS's.
 
